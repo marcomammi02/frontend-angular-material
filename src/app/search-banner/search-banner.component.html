@@ -1,0 +1,32 @@
+<div id="banner" [ngClass]="{'d-none': !isBannerOpen}">
+  <mat-toolbar color="primary">
+    <h1 class="pt-3 ps-3">Search by:</h1>
+    <span class="header-spacer"></span>
+    <a  (click)="closeBanner()" ><mat-icon class="pe-5">clear</mat-icon></a>
+  </mat-toolbar>
+
+  <form id="tire-form" class="d-flex flex-column justify-content-evenly align-items-start ps-5">
+    <mat-form-field color="accent">
+      <mat-label>Brand:</mat-label>
+      <mat-select name="brand" [(ngModel)]="selectedBrand">
+        <mat-option>Any</mat-option>
+        <mat-option *ngFor="let brand of availableBrands" [value]="brand">{{brand}}</mat-option>
+        <mat-option value="Roadstone">Roadstone</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Size:</mat-label>
+      <mat-select name="size" [(ngModel)]="selectedSize">
+        <mat-option>Any</mat-option>
+        <mat-option *ngFor="let size of availableSizes" [value]="size">{{size}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox name="summerChecked" [(ngModel)]="summerChecked">Summer</mat-checkbox>
+    <mat-checkbox name="allSeasonChecked" [(ngModel)]="allSeasonChecked">All Season</mat-checkbox>
+    <mat-checkbox name="winterChecked" [(ngModel)]="winterChecked">Winter</mat-checkbox>
+
+    <a mat-raised-button color="accent" class="align-self-center" type="submit" (click)="search(); closeBanner()">Search</a>
+  </form>
+</div>

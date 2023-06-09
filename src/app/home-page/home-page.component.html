@@ -1,0 +1,12 @@
+<div class="component-container row">
+  <mat-toolbar color="primary">
+    <h1 class="pt-3">Tire Finder</h1>
+  </mat-toolbar>
+    <div class="d-flex justify-content-center align-items-center flex-column gap-5">
+      <a mat-raised-button color="accent" (click)="openBanner()">Search tire!</a>
+      <a mat-raised-button color="accent" *ngIf="nTires >= 0" [routerLink]="['/results']">{{ nTires }} Results</a>
+    </div>
+  </div>
+
+<app-search-banner [isBannerOpen]="isSearchBannerOpen" (isBannerOpenChange)="onBannerOpenChange($event)" (resultsOutput)="countResult($event)" />
+
